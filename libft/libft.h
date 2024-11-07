@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 21:15:45 by nkalkoul          #+#    #+#             */
-/*   Updated: 2024/11/02 14:16:49 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:24:52 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 #  define BUFFER_SIZE 1
 # endif
 
-size_t	ft_strlen(const char *s);
+size_t	fts_strlen(const char *s);
 char	*fts_strchr(const char *s, char c);
 char	*fts_strdup(const char *s);
 char	*get_next_line(int fd);
