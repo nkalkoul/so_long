@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 14:17:03 by nkalkoul          #+#    #+#             */
-/*   Updated: 2024/11/07 16:22:18 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:13:16 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int	main(int ac, char **av)
 
 	if (fill_data(av, &all) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	// if (ft_start_pars(&all) == EXIT_FAILURE)
-	// 	return (EXIT_FAILURE);
+	if (ft_start_pars(&all) == EXIT_FAILURE)
+		return (ft_putstr_fd(""));
 	return (ft_free_map(&all), EXIT_SUCCESS);
 }
 

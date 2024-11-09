@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nas91 <kalkoul.nassim@gmail.com>           #+#  +:+       +#+        */
+/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-08 12:29:48 by nas91             #+#    #+#             */
-/*   Updated: 2024-11-08 12:29:48 by nas91            ###   ########.fr       */
+/*   Created: 2024/11/08 12:29:48 by nas91             #+#    #+#             */
+/*   Updated: 2024/11/09 16:05:50 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
+
+# define WALL 1
+# define COIN 'C'
+# define EXIT 'E'
+# define POSD 'P'
+# define VIDE '0'
 
 typedef struct s_all
 {
