@@ -13,25 +13,27 @@
 #include "so_long.h"
 #include <stdlib.h>
 
-void ft_display_maps(char **res)
+void	ft_display_maps(char **str)
 {
-	int i = 0;
+	int	i;
 
-	while (res[i])
+	i = 0;
+
+	while (str[i])
 	{
-		printf("%s\n", res[i]);
+		printf("%s\n", str[i]);
 		i++;
 	}
 	return ;
 }
+
 char	*ft_createmap(t_all *all)
 {
 	int		fd;
 	char	*line;
 	char	*res;
 
-
-	fd = open(all->av1,O_RDONLY);
+	fd = open(all->av1, O_RDONLY);
 	if (fd == -1)
 		return (ft_putstr_fd("Error\nFAILD OPEN", 2), NULL);
 	res = ft_strdup("");
@@ -46,16 +48,19 @@ char	*ft_createmap(t_all *all)
 		free(line);
 		line = get_next_line(fd);
 	}
-	return (free(line), res);
+	return (res);
 }
 
 char	**ft_get_map(t_all *all)
 {
 	char	**map;
-	map = ft_split(ft_createmap(all), '\n');
+	char	*res;
+
+	res = ft_createmap(all);
+	map = ft_split(res, '\n');
 	if (!map)
-		return (NULL);
-	return (map);
+		return (free(res), NULL);
+	return (free(res), map);
 }
 
 int	fill_data(char **av, t_all *all)
@@ -66,7 +71,6 @@ int	fill_data(char **av, t_all *all)
 	if (all->map == NULL)
 		return (EXIT_FAILURE);
 	ft_display_maps(all->map);
-	all -> coin = 0;
 	return (EXIT_SUCCESS);
 }
 
@@ -78,6 +82,6 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	// if (ft_start_pars(&all) == EXIT_FAILURE)
 	// 	return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);				
+	return (ft_free_map(&all), EXIT_SUCCESS);
 }
 

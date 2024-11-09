@@ -18,5 +18,6 @@ int ft_start_pars(t_all *all)
 		return (EXIT_FAILURE);
 	if (ft_check_mur(all) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if ()
+	if (ft_check_cara(all) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 }

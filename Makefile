@@ -1,12 +1,12 @@
-SRCS =	test.c
-CC =	cc -g #-Wall -Werror -Wextra
+SRCS =	so_long.c ft_free.c
+CC =	cc -g3 #-Wall -Werror -Wextra
 DIRLIB = ./libft
 DIRLIB2 = ./minilibx-linux
 
 LIBFT = $(DIRLIB)/libft.a
 MLXLIB = $(DIRLIB2)/libmlx.a
 
-INCLUDE = -I/usr/include -Imlx
+#INCLUDE = -I/usr/include -Imlx
 NAME =	so_long
 OBJS =	$(SRCS:.c=.o)
 
@@ -23,7 +23,7 @@ $(MLXLIB) :
 	@make -sC $(DIRLIB2)
 
 %.o : %.c
-	$(CC) -c $< -o $@ $(INCLUDE)
+	$(CC) -c $< -o $@ -Imlx
 	#echo "compiling: $<"
 
 clean :

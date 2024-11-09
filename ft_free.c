@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nas91 <kalkoul.nassim@gmail.com>           #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-08 12:29:48 by nas91             #+#    #+#             */
-/*   Updated: 2024-11-08 12:29:48 by nas91            ###   ########.fr       */
+/*   Created: 2024-11-08 12:28:16 by nas91             #+#    #+#             */
+/*   Updated: 2024-11-08 12:28:16 by nas91            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-# include "libft/libft.h"
-# include "minilibx-linux/mlx.h"
-# include "minilibx-linux/mlx_int.h"
-
-typedef struct s_all
+void	ft_free_map(t_all *all)
 {
-	char	*av1;
-	char	**map;
-	int		coin;
-}	t_all;
+	int		i;
 
-void	ft_free_map(t_all *all);
-
-#endif 
+	i = 0;
+	while (all->map[i] != NULL)
+	{
+		free(all->map[i]);
+		i++;
+	}
+	free(all->map);
+	all->map = NULL;
+}
