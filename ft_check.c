@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:00:53 by nkalkoul          #+#    #+#             */
-/*   Updated: 2024/11/09 18:34:33 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2024/11/11 21:29:32 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 int	ft_start_pars(t_all *all)
 {
-	if (ft_check_rec(all) == EXIT_FAILURE)
+	if (ft_check_rec(all) == 1)
 		return (ft_putstr_fd("Error\nThe map is not a rectangle", 2),
-			EXIT_FAILURE);
-	if (ft_check_mur(all) == EXIT_FAILURE)
+			1);
+	if (ft_check_mur(all) == 1)
 		return (ft_putstr_fd("Error\nThe map is not surrounded by a wall", 2),
-			EXIT_FAILURE);
-	if (ft_check_cara(all) == EXIT_FAILURE)
+			1);
+	if (ft_check_cara(all) == 1)
 		return (ft_putstr_fd
-			("Error\nThere is one or more invalid characters in the map", 2),
-			EXIT_FAILURE);
+			("Error\nThere is one or more invalid characters in the map", 2), 1);
+	if (ft_check_content(all) == 1)
+		return (1);
+	//if (ft_map_jouable)
+	return (0);
 }
 
 int	ft_check_rec(t_all	*all)
@@ -36,10 +39,10 @@ int	ft_check_rec(t_all	*all)
 	while (str[i + 1])
 	{
 		if (ft_strlen(str[i]) != ft_strlen(str[i + 1]))
-			return (EXIT_FAILURE);
+			return (1);
 		i++;
 	}
-	return (EXIT_SUCCESS);
+	return (0);
 }
 
 int	ft_check_mur(t_all *all)
@@ -54,21 +57,21 @@ int	ft_check_mur(t_all *all)
 	while (str[i][j])
 	{
 		if (str[i][j++] != WALL)
-			return (EXIT_FAILURE);
+			return (1);
 	}
 	while (str[i])
 	{
 		if (str[i][0] != WALL || str[i][ft_strlen(str[i]) - 1] != WALL)
-			return (EXIT_FAILURE);
+			return (1);
 		i++;
 	}
 	j = 0;
 	while (str[i - 1][j])
 	{
 		if (str[i - 1][j++] != WALL)
-			return (EXIT_FAILURE);
+			return (1);
 	}
-	return (EXIT_SUCCESS);
+	return (0);
 }
 
 int	ft_check_cara(t_all *all)
@@ -85,11 +88,12 @@ int	ft_check_cara(t_all *all)
 		while (str[i][j])
 		{
 			if (ft_isgood(str[i][j]) == 1)
-				return (EXIT_FAILURE);
+				return (1);
 			j++;
 		}
 		i++;
 	}
+	return (0);
 }
 
 int	ft_check_ber(char *str)
@@ -99,9 +103,10 @@ int	ft_check_ber(char *str)
 
 	i = 0;
 	pt = ft_strchr(str, '.');
-	printf(".. pt = %s\n", pt);
+	if (pt == NULL)
+		return (1);
 	if (ft_strncmp(pt, ".ber", 4) != 0)
-		return (EXIT_FAILURE);
+		return (1);
 	else
-		return (EXIT_SUCCESS);
+		return (0);
 }

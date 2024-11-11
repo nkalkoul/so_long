@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 14:17:03 by nkalkoul          #+#    #+#             */
-/*   Updated: 2024/11/09 18:13:16 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2024/11/11 21:34:47 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_display_maps(char **str)
 	int	i;
 
 	i = 0;
-
 	while (str[i])
 	{
 		printf("%s\n", str[i]);
@@ -57,6 +56,8 @@ char	**ft_get_map(t_all *all)
 	char	*res;
 
 	res = ft_createmap(all);
+	if (!res)
+		return (ft_putstr_fd("Error\nEMPTY FUCKING LINE", 2), NULL);
 	map = ft_split(res, '\n');
 	if (!map)
 		return (free(res), NULL);
@@ -66,25 +67,24 @@ char	**ft_get_map(t_all *all)
 int	fill_data(char **av, t_all *all)
 {
 	all -> av1 = av[1];
-	if (ft_check_ber(all->av1) == EXIT_FAILURE)
+	if (ft_check_ber(all->av1) == 1)
 		return (ft_putstr_fd
 			("the file is not in the correct format", 2),
-			EXIT_FAILURE);
+			1);
 	all -> map = ft_get_map(all);
 	if (all->map == NULL)
-		return (EXIT_FAILURE);
-	ft_display_maps(all->map);
-	return (EXIT_SUCCESS);
+		return (1);
+	//ft_display_maps(all->map);
+	return (0);
 }
 
 int	main(int ac, char **av)
 {
 	t_all	all;
 
-	if (fill_data(av, &all) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (ft_start_pars(&all) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	return (ft_free_map(&all), EXIT_SUCCESS);
+	if (fill_data(av, &all) == 1)
+		return (1);
+	if (ft_start_pars(&all) == 1)
+		return (ft_free_map(&all), 1);
+	return (ft_free_map(&all), 0);
 }
-
