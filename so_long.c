@@ -66,7 +66,10 @@ char	**ft_get_map(t_all *all)
 int	fill_data(char **av, t_all *all)
 {
 	all -> av1 = av[1];
-	//secu chemin ;
+	if (ft_check_ber(all->av1) == EXIT_FAILURE)
+		return (ft_putstr_fd
+			("the file is not in the correct format", 2),
+			EXIT_FAILURE);
 	all -> map = ft_get_map(all);
 	if (all->map == NULL)
 		return (EXIT_FAILURE);
@@ -81,7 +84,7 @@ int	main(int ac, char **av)
 	if (fill_data(av, &all) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (ft_start_pars(&all) == EXIT_FAILURE)
-		return (ft_putstr_fd(""));
+		return (EXIT_FAILURE);
 	return (ft_free_map(&all), EXIT_SUCCESS);
 }
 

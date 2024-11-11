@@ -1,4 +1,4 @@
-SRCS =	so_long.c ft_free.c ft_check.c
+SRCS =	so_long.c ft_utils.c ft_check.c
 CC =	cc -g3 #-Wall -Werror -Wextra
 DIRLIB = ./libft
 DIRLIB2 = ./minilibx-linux

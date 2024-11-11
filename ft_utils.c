@@ -25,3 +25,10 @@ void	ft_free_map(t_all *all)
 	free(all->map);
 	all->map = NULL;
 }
+
+int	ft_isgood(char c)
+{
+	if (c == WALL || c == EXIT || c == COIN || c == POSD || c == VIDE)
+		return (0);
+	return (1);
+}

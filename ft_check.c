@@ -12,15 +12,20 @@
 
 #include "so_long.h"
 
-int ft_start_pars(t_all *all)
+int	ft_start_pars(t_all *all)
 {
 	if (ft_check_rec(all) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
+		return (ft_putstr_fd("Error\nThe map is not a rectangle", 2),
+			EXIT_FAILURE);
 	if (ft_check_mur(all) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
+		return (ft_putstr_fd("Error\nThe map is not surrounded by a wall", 2),
+			EXIT_FAILURE);
 	if (ft_check_cara(all) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
+		return (ft_putstr_fd
+			("Error\nThere is one or more invalid characters in the map", 2),
+			EXIT_FAILURE);
 }
+
 int	ft_check_rec(t_all	*all)
 {
 	int		i;
@@ -46,45 +51,57 @@ int	ft_check_mur(t_all *all)
 	str = all->map;
 	i = 0;
 	j = 0;
-	while (str[i][j++])
+	while (str[i][j])
 	{
-		if (str[i][j] != WALL)
+		if (str[i][j++] != WALL)
 			return (EXIT_FAILURE);
 	}
-	while (str[i++])
+	while (str[i])
 	{
 		if (str[i][0] != WALL || str[i][ft_strlen(str[i]) - 1] != WALL)
 			return (EXIT_FAILURE);
+		i++;
 	}
-	j= 0;
-	while (str[i - 1][j++])
+	j = 0;
+	while (str[i - 1][j])
 	{
-		if (str[i][j] != WALL)
+		if (str[i - 1][j++] != WALL)
 			return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
 }
 
-int	ft_isgood(int c)
-{
-	if ( c == WALL || c == EXIT || c == COIN || c == POSD || c == VIDE)
-		return (0);
-	return (1);
-}
 int	ft_check_cara(t_all *all)
 {
 	int		i;
 	int		j;
 	char	**str;
 
+	str = all->map;
 	i = 0;
-	while (str[i++])
+	while (str[i])
 	{
 		j = 0;
-		while (str[i][j++])
+		while (str[i][j])
 		{
-			if (ft_isgood(str[i][j] == 1))
+			if (ft_isgood(str[i][j]) == 1)
 				return (EXIT_FAILURE);
+			j++;
 		}
+		i++;
 	}
+}
+
+int	ft_check_ber(char *str)
+{
+	int		i;
+	char	*pt;
+
+	i = 0;
+	pt = ft_strchr(str, '.');
+	printf(".. pt = %s\n", pt);
+	if (ft_strncmp(pt, ".ber", 4) != 0)
+		return (EXIT_FAILURE);
+	else
+		return (EXIT_SUCCESS);
 }

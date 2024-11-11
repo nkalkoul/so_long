@@ -17,7 +17,7 @@
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
 
-# define WALL 1
+# define WALL '1'
 # define COIN 'C'
 # define EXIT 'E'
 # define POSD 'P'
@@ -31,5 +31,11 @@ typedef struct s_all
 }	t_all;
 
 void	ft_free_map(t_all *all);
+int		ft_start_pars(t_all *all);
+int		ft_check_rec(t_all	*all);
+int		ft_check_mur(t_all *all);
+int		ft_check_cara(t_all *all);
+int		ft_isgood(char c);
+int		ft_check_ber(char *str);
 
 #endif 
