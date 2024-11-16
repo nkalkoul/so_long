@@ -22,10 +22,10 @@ int	ft_start_pars(t_all *all)
 			1);
 	if (ft_check_cara(all) == 1)
 		return (ft_putstr_fd
-			("Error\nThere is one or more invalid characters in the map", 2), 1);
+			("Error\nThere is one or more invalid characters in the map", 2),
+			1);
 	if (ft_check_content(all) == 1)
 		return (1);
-	//if (ft_map_jouable)
 	return (0);
 }
 
