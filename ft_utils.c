@@ -12,24 +12,34 @@
 
 #include "so_long.h"
 
-void	ft_free_map(t_all *all)
+int	ft_isgood(char c)
+{
+	if (c == WALL || c == SORTIE || c == COLL || c == POSD || c == VIDE
+		|| c == PLAYER)
+		return (0);
+	return (1);
+}
+
+char	**ft_copymap(t_all *all)
 {
 	int		i;
 
 	i = 0;
-	while (all->map[i] != NULL)
+	all->copy = malloc(sizeof(char *) * (ft_countdouble(all->map) + 1));
+	if (!all->copy)
+		return (NULL);
+	while (all->map[i])
 	{
-		free(all->map[i]);
+		all->copy[i] = ft_strdup(all->map[i]);
+		if (!all->copy[i])
+		{
+			while (--i >= 0)
+				free(all->copy[i]);
+			free(all->copy);
+			return (NULL);
+		}
 		i++;
 	}
-	free(all->map);
-	all->map = NULL;
-}
-
-int	ft_isgood(char c)
-{
-	if (c == WALL || c == EXIT || c == COIN || c == POSD || c == VIDE
-		|| c == PLAYER)
-		return (0);
-	return (1);
+	all->copy[i] = NULL;
+	return (all->copy);
 }

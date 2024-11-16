@@ -21,3 +21,13 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
+
+int	ft_countdouble(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}

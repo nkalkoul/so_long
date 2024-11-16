@@ -55,6 +55,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
+int		ft_countdouble(char **str);
+void	ft_free_double(char **str);
 
 /* BONUS */
 typedef struct s_list

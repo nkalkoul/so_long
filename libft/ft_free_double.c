@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_free_double.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nas91 <kalkoul.nassim@gmail.com>           #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/24 16:52:53 by nkalkoul          #+#    #+#             */
-/*   Updated: 2024/05/28 14:11:06 by nkalkoul         ###   ########.fr       */
+/*   Created: 2024-11-15 21:21:46 by nas91             #+#    #+#             */
+/*   Updated: 2024-11-15 21:21:46 by nas91            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_free_double(char **str)
 {
-	size_t	i;
+	int		i;
 
-	if (!dest || !src)
-		return (NULL);
 	i = 0;
-	while (i < n)
+	while (str[i] != NULL)
 	{
-		*(unsigned char *)(dest + i) = *(unsigned char *)(src + i);
+		free(str[i]);
 		i++;
 	}
-	return (dest);
+	free(str);
+	str = NULL;
 }

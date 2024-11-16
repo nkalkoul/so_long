@@ -82,9 +82,15 @@ int	main(int ac, char **av)
 {
 	t_all	all;
 
-	if (fill_data(av, &all) == 1)
-		return (1);
-	if (ft_start_pars(&all) == 1)
-		return (ft_free_map(&all), 1);
-	return (ft_free_map(&all), 0);
+	if (ac == 2)
+	{
+		if (fill_data(av, &all) == 1)
+			return (1);
+		if (ft_start_pars(&all) == 1)
+			return (ft_free_double(all.map), 1);
+		if (ft_fill(&all) == 1)
+			return (ft_free_double(all.map), 1);
+		return (ft_free_double(all.map), 0);
+	}
+	return (ft_putstr_fd("Error\nWrong number of args", 2), 0);
 }
