@@ -15,14 +15,16 @@
 int	ft_start_pars(t_all *all)
 {
 	if (ft_check_rec(all) == 1)
-		return (ft_putstr_fd("Error\nThe map is not a rectangle", 2),
+		return (ft_putstr_fd("Error\nThe map is not a rectangle\n", 2),
 			1);
 	if (ft_check_mur(all) == 1)
-		return (ft_putstr_fd("Error\nThe map is not surrounded by a wall", 2),
+		return (ft_putstr_fd("Error\nThe map is not surrounded by a wall\n", 2),
 			1);
+	if (ft_check_len(all) == 1)
+		return (ft_putstr_fd("Error\nTo smaaaaall", 2), 1);
 	if (ft_check_cara(all) == 1)
 		return (ft_putstr_fd
-			("Error\nThere is one or more invalid characters in the map", 2),
+			("Error\nThere is one or more invalid characters in the map\n", 2),
 			1);
 	if (ft_check_content(all) == 1)
 		return (1);
@@ -105,6 +107,8 @@ int	ft_check_ber(char *str)
 	pt = ft_strchr(str, '.');
 	if (pt == NULL)
 		return (1);
+	while (ft_strchr(pt + 1, '.'))
+		pt = ft_strchr(pt + 1, '.');
 	if (ft_strncmp(pt, ".ber", 4) != 0)
 		return (1);
 	else

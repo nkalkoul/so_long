@@ -14,7 +14,6 @@
 
 void	ft_flood_fill(t_all *all, int y, int x)
 {
-
 	if (all->copy[y][x] == WALL || all->copy[y][x] == 'N')
 		return ;
 	if (all->copy[y][x] == COLL)
@@ -22,8 +21,6 @@ void	ft_flood_fill(t_all *all, int y, int x)
 	if (all->copy[y][x] == SORTIE)
 		all->cosortie--;
 	all->copy[y][x] = 'N';
-	ft_display_maps(all->copy);
-	write(1, "\n", 1);
 	ft_flood_fill(all, y, x + 1);
 	ft_flood_fill(all, y, x - 1);
 	ft_flood_fill(all, y + 1, x);
@@ -36,7 +33,6 @@ int	ft_fill(t_all *all)
 	all->cocoll = all->coll;
 	all->cosortie = all->sortie;
 	ft_copymap(all);
-	ft_display_maps(all->copy);
 	while (all->map[all->y])
 	{
 		all->x = 0;
@@ -51,9 +47,8 @@ int	ft_fill(t_all *all)
 		all->y++;
 	}
 	ft_flood_fill(all, all->y, all->x);
-	write(1, "\n", 1);
 	ft_free_double(all->copy);
 	if (all->cocoll != 0 || all->cosortie != 0)
-		return (ft_putstr_fd("Error\nInvalid path", 2), 1);
+		return (ft_putstr_fd("Error\nInvalid path\n", 2), 1);
 	return (0);
 }

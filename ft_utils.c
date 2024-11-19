@@ -14,8 +14,7 @@
 
 int	ft_isgood(char c)
 {
-	if (c == WALL || c == SORTIE || c == COLL || c == POSD || c == VIDE
-		|| c == PLAYER)
+	if (c == WALL || c == SORTIE || c == COLL || c == PLAYER || c == FLOOR)
 		return (0);
 	return (1);
 }
@@ -42,4 +41,18 @@ char	**ft_copymap(t_all *all)
 	}
 	all->copy[i] = NULL;
 	return (all->copy);
+}
+
+void	ft_free_mlx(t_all *all)
+{
+	if (all->imgcol)
+		mlx_destroy_image(all->mlx, all->imgcol);
+	if (all->imgfloor)
+		mlx_destroy_image(all->mlx, all->imgfloor);
+	if (all->imgsort)
+		mlx_destroy_image(all->mlx, all->imgsort);
+	if (all->imgplayer)
+		mlx_destroy_image(all->mlx, all->imgplayer);
+	if (all->imgwall)
+		mlx_destroy_image(all->mlx, all->imgwall);
 }

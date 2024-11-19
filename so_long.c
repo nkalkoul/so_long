@@ -34,19 +34,20 @@ char	*ft_createmap(t_all *all)
 
 	fd = open(all->av1, O_RDONLY);
 	if (fd == -1)
-		return (ft_putstr_fd("Error\nFAILD OPEN", 2), NULL);
+		return (ft_putstr_fd("Error\nFAILD OPEN\n", 2), NULL);
 	res = ft_strdup("");
 	line = get_next_line(fd);
 	while (line)
 	{
 		if (line[0] == '\n')
-			return (free(line), free(res), NULL);
+			return (close(fd), free(line), free(res), NULL);
 		res = ft_re_strjoin(res, line);
 		if (!res)
-			return (free(line), NULL);
+			return (close(fd), free(line), NULL);
 		free(line);
 		line = get_next_line(fd);
 	}
+	close(fd);
 	return (res);
 }
 
@@ -57,7 +58,7 @@ char	**ft_get_map(t_all *all)
 
 	res = ft_createmap(all);
 	if (!res)
-		return (ft_putstr_fd("Error\nEMPTY FUCKING LINE", 2), NULL);
+		return (ft_putstr_fd("Error\nEMPTY FUCKING LINE\n", 2), NULL);
 	map = ft_split(res, '\n');
 	if (!map)
 		return (free(res), NULL);
@@ -69,12 +70,11 @@ int	fill_data(char **av, t_all *all)
 	all -> av1 = av[1];
 	if (ft_check_ber(all->av1) == 1)
 		return (ft_putstr_fd
-			("the file is not in the correct format", 2),
+			("Error\nThe file is not in the correct format\n", 2),
 			1);
 	all -> map = ft_get_map(all);
 	if (all->map == NULL)
 		return (1);
-	//ft_display_maps(all->map);
 	return (0);
 }
 
@@ -90,7 +90,9 @@ int	main(int ac, char **av)
 			return (ft_free_double(all.map), 1);
 		if (ft_fill(&all) == 1)
 			return (ft_free_double(all.map), 1);
+		if (ft_start_mlx(&all) == 1)
+			return (ft_free_double(all.map), 1);
 		return (ft_free_double(all.map), 0);
 	}
-	return (ft_putstr_fd("Error\nWrong number of args", 2), 0);
+	return (ft_putstr_fd("Error\nWrong number of args\n", 2), 0);
 }

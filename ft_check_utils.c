@@ -52,3 +52,22 @@ void	ft_check_count(char *str, t_all *all)
 		i++;
 	}
 }
+
+int	ft_check_len(t_all *all)
+{
+	all->lx = ft_strlen(all->map[0]);
+	all->ly = ft_countdouble(all->map);
+	if (all->lx < 3 || all->ly < 3)
+		return (1);
+	if (all->lx == 3)
+	{
+		if (all->ly < 5)
+			return (1);
+	}
+	if (all->ly >= 3)
+	{
+		if (all->lx < 5)
+			return (1);
+	}
+	return (0);
+}

@@ -68,7 +68,7 @@ char	*ft_gnl(int fd, char *buffer, char *save, char *line)
 	if (line == NULL || line[0] == '\0')
 		return (free(buffer), free(line), NULL);
 	return (free(buffer), line);
-}	
+}
 
 char	*get_next_line(int fd)
 {

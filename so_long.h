@@ -17,12 +17,20 @@
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
 
+# define SIZE 64
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
 # define WALL '1'
 # define COLL 'C'
 # define SORTIE 'E'
-# define POSD 'P'
-# define VIDE '0'
 # define PLAYER 'P'
+# define FLOOR '0'
+# define IMGFLOOR "image/tatami.xpm"
+# define IMGPLAYER "image/TYSON.xpm"
+# define IMGWALL "image/PUNCHBOXE.xpm"
+# define IMGCOL "image/GLOVES.xpm"
 
 typedef struct s_all
 {
@@ -36,6 +44,15 @@ typedef struct s_all
 	int		cocoll;
 	int		x;
 	int		y;
+	int		lx;
+	int		ly;
+	void	*mlx;
+	void	*imgcol;
+	void	*imgsort;
+	void	*imgplayer;
+	void	*imgwall;
+	void	*imgfloor;
+	void	*winptr;
 }	t_all;
 
 int		ft_start_pars(t_all *all);
@@ -49,5 +66,8 @@ void	ft_check_count(char *str, t_all *all);
 void	ft_display_maps(char **str);
 char	**ft_copymap(t_all *all);
 int		ft_fill(t_all *all);
+int		ft_check_len(t_all *all);
+void	ft_free_mlx(t_all *all);
+int		ft_start_mlx(t_all *all);
 
-#endif 
+#endif
