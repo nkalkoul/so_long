@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 21:15:45 by nkalkoul          #+#    #+#             */
-/*   Updated: 2024/11/07 16:24:52 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2024/11/19 23:49:36 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,18 @@ char	*get_next_line(int fd);
 char	*ft_re_strjoin(char *s1, char *s2);
 char	*fts_substr(char *s, size_t start, size_t len);
 char	*fts_strlcpy(char *dest, char *src, size_t len_of_s1);
+
+/* ft_printf */
+
+int		ft_printf(const char *str, ...);
+int		ft_putintd(va_list carg);
+int		ft_putc(va_list carg);
+int		ft_puts(char *str);
+int		ft_putu(unsigned int n);
+int		ft_putptr(void *ptr);
+int		ft_putnbrbase(unsigned long nb, char *base);
+int		ft_putptr(void *ptr);
+int		ft_putnbrbase(unsigned long nb, char *base);
+int		ft_puthex(unsigned int nb, char format);
 
 #endif

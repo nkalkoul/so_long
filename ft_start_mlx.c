@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start_mlx.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nas91 <kalkoul.nassim@gmail.com>           #+#  +:+       +#+        */
+/*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-17 03:01:02 by nas91             #+#    #+#             */
-/*   Updated: 2024-11-17 03:01:02 by nas91            ###   ########.fr       */
+/*   Created: 2024/11/17 03:01:02 by nas91             #+#    #+#             */
+/*   Updated: 2024/11/19 23:05:07 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int	ft_start_mlx(t_all *all)
 			ft_putstr_fd("Error\nError mlx windows", 2), 1);
 	if (ft_init_image(all) == 1)
 	{
-		ft_free_mlx(all);
 		mlx_destroy_display(all->mlx);
 		return (ft_putstr_fd("Error\nError with image loading\n", 2), 1);
 	}
