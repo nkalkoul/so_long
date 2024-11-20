@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	ft_check_content(t_all *all)
 {
@@ -70,4 +70,14 @@ int	ft_check_len(t_all *all)
 			return (1);
 	}
 	return (0);
+}
+
+void	ft_value(t_all *all)
+{
+	all->imgcol = NULL;
+	all->imgfloor = NULL;
+	all->imgplayer = NULL;
+	all->imgsort = NULL;
+	all->imgwall = NULL;
+	all->winptr = NULL;
 }

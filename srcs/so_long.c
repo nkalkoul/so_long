@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include <stdlib.h>
+#include "../so_long.h"
 
 void	ft_display_maps(char **str)
 {
@@ -20,7 +19,7 @@ void	ft_display_maps(char **str)
 	i = 0;
 	while (str[i])
 	{
-		printf("%s\n", str[i]);
+		ft_printf("%s\n", str[i]);
 		i++;
 	}
 	return ;
@@ -90,9 +89,7 @@ int	main(int ac, char **av)
 			return (ft_free_double(all.map), 1);
 		if (ft_fill(&all) == 1)
 			return (ft_free_double(all.map), 1);
-		if (ft_start_mlx(&all) == 1)
-			return (ft_free_double(all.map), 1);
-		return (ft_free_double(all.map), 0);
+		ft_start_mlx(&all);
 	}
 	return (ft_putstr_fd("Error\nWrong number of args\n", 2), 0);
 }

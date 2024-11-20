@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	ft_start_pars(t_all *all)
 {
@@ -109,7 +109,7 @@ int	ft_check_ber(char *str)
 		return (1);
 	while (ft_strchr(pt + 1, '.'))
 		pt = ft_strchr(pt + 1, '.');
-	if (ft_strncmp(pt, ".ber", 4) != 0)
+	if (ft_strlen(pt) != 4 || ft_strncmp(pt, ".ber", 4) != 0)
 		return (1);
 	else
 		return (0);

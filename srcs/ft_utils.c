@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	ft_isgood(char c)
 {
@@ -55,4 +55,41 @@ void	ft_free_mlx(t_all *all)
 		mlx_destroy_image(all->mlx, all->imgplayer);
 	if (all->imgwall)
 		mlx_destroy_image(all->mlx, all->imgwall);
+}
+
+void	ft_isexit(t_all *all)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (all->map[i])
+	{
+		j = 0;
+		while (all->map[i][j])
+		{
+			if (all->map[i][j] == SORTIE)
+				break ;
+			j++;
+		}
+		if (all->map[i][j] == SORTIE)
+			break ;
+		i++;
+	}
+	all->ex = j;
+	all->ey = i;
+}
+
+void	ft_finish(t_all *all, int fin)
+{
+	ft_free_mlx(all);
+	if (all->winptr)
+		mlx_destroy_window(all->mlx, all->winptr);
+	if (all->mlx)
+	{
+		mlx_destroy_display(all->mlx);
+		free(all->mlx);
+	}
+	ft_free_double(all->map);
+	exit(fin);
 }

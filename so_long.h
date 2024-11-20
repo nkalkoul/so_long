@@ -22,6 +22,7 @@
 # define A_KEY 97
 # define S_KEY 115
 # define D_KEY 100
+# define ECHAP 65307
 # define WALL '1'
 # define COLL 'C'
 # define SORTIE 'E'
@@ -31,6 +32,7 @@
 # define IMGPLAYER "image/TYSON.xpm"
 # define IMGWALL "image/PUNCHBOXE.xpm"
 # define IMGCOL "image/GLOVES.xpm"
+# define IMGSORT "image/ceinture.xpm"
 
 typedef struct s_all
 {
@@ -46,6 +48,8 @@ typedef struct s_all
 	int		y;
 	int		lx;
 	int		ly;
+	int		ex;
+	int		ey;
 	void	*mlx;
 	void	*imgcol;
 	void	*imgsort;
@@ -68,6 +72,10 @@ char	**ft_copymap(t_all *all);
 int		ft_fill(t_all *all);
 int		ft_check_len(t_all *all);
 void	ft_free_mlx(t_all *all);
-int		ft_start_mlx(t_all *all);
+void	ft_start_mlx(t_all *all);
+void	ft_isexit(t_all *all);
+void	ft_finish(t_all *all, int fin);
+int		ft_touch(int keycode, t_all *all);
+void	ft_value(t_all *all);
 
 #endif

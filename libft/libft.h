@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <fcntl.h>
+# include <stdarg.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
