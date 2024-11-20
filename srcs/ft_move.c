@@ -6,7 +6,7 @@
 /*   By: nkalkoul <nkalkoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 20:25:10 by nkalkoul          #+#    #+#             */
-/*   Updated: 2024/11/20 01:55:25 by nkalkoul         ###   ########.fr       */
+/*   Updated: 2024/11/20 20:34:04 by nkalkoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	ft_replace(t_all *all, int x, int y)
 
 	if (all->map[y][x] != WALL)
 	{
-		ft_printf("count = %d\n", ++count);
+		ft_printf("move = %d\n", ++count);
 		if (all->map[y][x] == COLL)
 		{
-			all->map[y][x] == FLOOR;
+			all->map[y][x] = FLOOR;
 			all->coll--;
 		}
 		if (all->coll > 0 || all->map[y][x] != SORTIE)
@@ -49,8 +49,9 @@ int	ft_touch(int keycode, t_all *all)
 	if (keycode == W_KEY)
 		ft_replace(all, all->x, all->y - 1);
 	if (keycode == S_KEY)
-		ft_replace(all, all->x, all->y - 1);
+		ft_replace(all, all->x, all->y + 1);
 	if (all->coll == 0)
 		mlx_put_image_to_window(all->mlx, all->winptr,
 			all->imgsort, all->ex * SIZE, all->ey * SIZE);
+	return (0);
 }
